@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>BMI | Body Mass Index Calculator</title>
+</head>
+<body>
+    <nav class="text-center mt-4">
+        <h1 class="font-bold text-4xl">BMI | Body Mass Index Calculator</h1>
+    </nav>
+    <div class="space-y-6">
+        <input id="height" class="border-2" placeholder="Enter Height" required>
+        <select id="hunit" class="border-2">
+            <option id="cm">cm</option>
+            <option id="meter">meter</option>
+        </select>
+        <br>
+        <input id="weight" class="border-2" placeholder="Enter Weight" required> 
+        <select id="wunit" class="border-2">
+            <option id="kg">Kg</option>
+            <option id="lbs">Lbs</option>
+        </select>
+        <br>
+        <button class="border-2" onclick=calBMI()>Calculate</button>
+    </div>
+    <p id="report"> Report : </p>
+</body>
+<script>
+function calBMI() {
+
+    let height = parseFloat(document.getElementById("height").value);
+    let weight = parseFloat(document.getElementById("weight").value);
+    let hunit = document.getElementById("hunit").value;
+    let wunit = document.getElementById("wunit").value;
+
+
+    if (hunit === "cm") {
+        height = height / 100;
+    }
+
+    if (wunit === "lbs") {
+        weight = weight * 0.453592;
+    }
+
+    let BMI = weight / (height * height);
+
+    let category = "";
+    let message = "";
+
+    if (BMI < 18.5) {
+        category = "Underweight";
+        message = "You may need to gain some healthy weight.";
+    } else if (BMI < 24.9) {
+        category = "Normal";
+        message = "Great! You have a healthy body weight.";
+    } else if (BMI < 29.9) {
+        category = "Overweight";
+        message = "Consider regular exercise and balanced diet.";
+    } else {
+        category = "Obese";
+        message = "It is advisable to consult a healthcare professional.";
+    }
+
+    document.getElementById("report").innerText =
+        `Report:
+        BMI Value: ${BMI.toFixed(2)}
+        Category: ${category}
+        Advice: ${message}`;
+    }
+</script>
+
+</html>
