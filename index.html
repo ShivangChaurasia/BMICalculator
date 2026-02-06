@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="icon" type="image/x-icon" href="/favicon.png">
     <title>BMI | Body Mass Index Calculator</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -25,7 +27,7 @@
         ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-indigo-50 min-h-screen">
+<body class="bg-gradient-to-br from-blue-100 to-indigo-200 min-h-screen">
     <!-- Header Section -->
     <header class="container mx-auto px-4 py-8">
         <nav class="text-center">
@@ -40,6 +42,8 @@
             </p>
         </nav>
     </header>
+
+    <div id="bmiAnimation" style="width:350px; margin:auto;"></div>
 
     <main class="container mx-auto px-4 pb-12">
         <div class="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto">
@@ -67,7 +71,7 @@
                                        step="0.01" 
                                        min="0"
                                        class="w-full p-4 border-2 border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200 text-lg" 
-                                       placeholder="e.g. 175" 
+                                       placeholder="Enter your height in digits" 
                                        required>
                             </div>
                             <div class="sm:w-40">
@@ -92,7 +96,7 @@
                                        step="0.01" 
                                        min="0"
                                        class="w-full p-4 border-2 border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200 text-lg" 
-                                       placeholder="e.g. 70" 
+                                       placeholder="Enter your weigth in digits" 
                                        required>
                             </div>
                             <div class="sm:w-40">
@@ -229,6 +233,15 @@
     <script>
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        let animation = lottie.loadAnimation({
+            container: document.getElementById("bmiAnimation"),
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: "/Health.json" 
+        });
+
 
         // Your original BMI calculation logic (unchanged)
         function calBMI() {
