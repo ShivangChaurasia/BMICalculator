@@ -118,7 +118,7 @@ GitHub: https://github.com/ShivangChaurasia
 
 ---
 ⚠️ DISCLAIMER
---=
-This tool provides general health information only.
-It is NOT a substitute for professional medical advice.
-Always consult a qualified healthcare provider.
+---
+- This tool provides general health information only.
+- It is NOT a substitute for professional medical advice.
+- Always consult a qualified healthcare provider.
